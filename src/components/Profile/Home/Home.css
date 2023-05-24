@@ -1,0 +1,24 @@
+.title{
+    font-size: 2.5rem;
+    color: rgb(72, 70, 70);
+}
+
+.tagline{
+    font-size: 1.3rem;
+}
+
+.progress{
+    margin: 4rem 0;
+}
+
+h2{
+    font-size: 2rem;
+}
+
+.home{
+    margin: 3rem 4rem;
+}
+
+.articles{
+    margin:6rem 0;
+}

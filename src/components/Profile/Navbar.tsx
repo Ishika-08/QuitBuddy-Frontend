@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Navbar, Center, Tooltip, UnstyledButton, createStyles, Stack, rem } from '@mantine/core';
+import { Navbar,Center, Tooltip, UnstyledButton, createStyles, Stack, rem } from '@mantine/core';
 import {
   IconHome2,
   IconGauge,
@@ -11,7 +11,10 @@ import {
   IconLogout,
   IconSwitchHorizontal,
 } from '@tabler/icons-react';
-// import { MantineLogo } from '@mantine/ds';
+
+interface NavbarMinimalColoredProps {
+  onNavItemSelect(content: string): void;
+}
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -72,15 +75,18 @@ const mockdata = [
   { icon: IconSettings, label: 'Settings' },
 ];
 
-export default function NavbarMinimalColored() {
-  const [active, setActive] = useState(2);
+export default function NavbarMinimalColored({ onNavItemSelect }: NavbarMinimalColoredProps) {
+  const [active, setActive] = useState(0);
 
   const links = mockdata.map((link, index) => (
     <NavbarLink
       {...link}
       key={link.label}
       active={index === active}
-      onClick={() => setActive(index)}
+      onClick={() => {
+        setActive(index);
+        onNavItemSelect(link.label);
+      }}
     />
   ));
 

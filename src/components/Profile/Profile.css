@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    /* background-color: rgb(228, 228, 228); */
+  }
+  
+  .navbar {
+    flex: 0 0 5rem; /* Set a fixed width for the navbar */
+    background: #f2f2f2;
+    position: fixed;
+  }
+  
+  .content {
+    flex: 1; /* Let the content fill the remaining space */
+    margin-left: 8rem;
+    padding-top: 5rem;
+  }
+  
