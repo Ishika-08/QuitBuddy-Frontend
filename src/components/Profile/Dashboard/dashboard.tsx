@@ -11,14 +11,14 @@ export default function LeadGrid() {
       stats: "10,000",
       progress: 80,
       color: "green",
-      icon: 'up',
+      icon: 'up' as const, // Use 'up' as const
     },
     {
       label: "Disease Risk",
       stats: "5,000",
       progress: 50,
       color: "red",
-      icon: 'down',
+      icon: 'down' as const, // Use 'down' as const
     }
   ];
   
