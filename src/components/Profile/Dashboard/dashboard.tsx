@@ -1,8 +1,8 @@
 import Counter from "./counter"
 import StatCard from "./statCard"
-import { Container, Grid, SimpleGrid, Skeleton, useMantineTheme, rem } from '@mantine/core';
+import { Container, Grid, SimpleGrid, Skeleton, rem } from '@mantine/core';
 
-const PRIMARY_COL_HEIGHT = rem(600);
+// const PRIMARY_COL_HEIGHT = rem(600);
 
 export default function LeadGrid() {
   const mockData = [
@@ -11,22 +11,23 @@ export default function LeadGrid() {
       stats: "10,000",
       progress: 80,
       color: "green",
-      icon: "up",
+      icon: 'up' as const, // Use 'up' as const
     },
     {
       label: "Disease Risk",
       stats: "5,000",
       progress: 50,
       color: "red",
-      icon: "down",
+      icon: 'down' as const, // Use 'down' as const
     }
   ];
   
-  const theme = useMantineTheme();
+  
+  // const theme = useMantineTheme();
   const SECONDARY_COL_HEIGHT = rem(300);
 
   return (
-    <Container my="md" width={rem(300)}>
+    <Container my="md">
       <SimpleGrid cols={2} spacing="md" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
         <Counter />
         <Grid gutter="md">
