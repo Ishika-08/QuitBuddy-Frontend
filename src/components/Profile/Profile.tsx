@@ -1,5 +1,5 @@
 import "./Profile.css"
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Navbar from './Navbar';
 import Home from "./Home/home"
 import Analytics from "./Analytics/Analytics"
@@ -10,7 +10,7 @@ const App = () => {
   
   
 
-  const handleNavItemSelect = (content) => {
+  const handleNavItemSelect = (content: string) => {
     setSelectedContent(content);
   };
 
