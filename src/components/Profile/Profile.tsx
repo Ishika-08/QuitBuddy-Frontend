@@ -4,9 +4,22 @@ import Navbar from './Navbar';
 import Home from "./Home/home"
 import Analytics from "./Analytics/Analytics"
 import Dashboard from './Dashboard/dashboard';
+import Blogs from "./Blogs/Blogs"
 
 const App = () => {
   const [selectedContent, setSelectedContent] = useState('Home');
+
+  const mockData= {
+    image: "./Article/img1.jpg",
+    link: 'https://example.com/smoking-article',
+    title: 'Tips for Quitting Smoking',
+    description: 'Discover effective strategies and tips to help you quit smoking and improve your health.',
+    rating: '5.0',
+    author: {
+      name: 'John Smith',
+      image: 'https://example.com/author-profile-image.jpg',
+    },
+  };
   
   
 
@@ -22,6 +35,8 @@ const App = () => {
         return <Analytics />;
       case 'Dashboard':
         return <Dashboard/>;
+      case 'Blogs':
+        return <Blogs {...mockData}/>
       default:
         return null;
     }
