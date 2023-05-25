@@ -4,7 +4,7 @@ import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    marginTop: rem(120),
+    // marginTop: rem(120),
     borderTop: `${rem(1)} solid ${
       theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
     }`,
@@ -51,6 +51,10 @@ export default function FooterCentered({ links }: FooterCenteredProps) {
   return (
     <div className={classes.footer}>
       <div className={classes.inner}>
+        <div>
+        <img src="./logo.jpg" alt="Logo" style={{ height: '50px', width: '50px', margin: '10px' }} />
+        </div>
+
         {/* <MantineLogo size={28} /> */}
 
         <Group className={classes.links}>{items}</Group>

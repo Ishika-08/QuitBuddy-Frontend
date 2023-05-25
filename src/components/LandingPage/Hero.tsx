@@ -1,114 +1,119 @@
-import { createStyles, Container, Title, Text, Button, rem } from '@mantine/core';
+import {
+  createStyles,
+  Image,
+  Container,
+  Title,
+  Button,
+  Group,
+  Text,
+  List,
+  ThemeIcon,
+  rem,
+} from '@mantine/core';
+import { IconCheck } from '@tabler/icons-react';
+import { useNavigate} from 'react-router-dom';
+// import image from './public/HeroSection.jpg';
 
 const useStyles = createStyles((theme) => ({
-  root: {
-    backgroundColor: '#11284b',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundImage:
-      'linear-gradient(250deg, rgba(130, 201, 30, 0) 0%, #062343 70%), url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1080&q=80)',
-    paddingTop: `calc(${theme.spacing.xl} * 3)`,
-    paddingBottom: `calc(${theme.spacing.xl} * 3)`,
-  },
-
   inner: {
     display: 'flex',
     justifyContent: 'space-between',
-
-    [theme.fn.smallerThan('md')]: {
-      flexDirection: 'column',
-    },
-  },
-
-  image: {
-    [theme.fn.smallerThan('md')]: {
-      display: 'none',
-    },
+    paddingTop: `calc(${theme.spacing.xl} * 4)`,
+    paddingBottom: `calc(${theme.spacing.xl} * 4)`,
   },
 
   content: {
-    paddingTop: `calc(${theme.spacing.xl} * 2)`,
-    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
+    maxWidth: rem(480),
     marginRight: `calc(${theme.spacing.xl} * 3)`,
 
     [theme.fn.smallerThan('md')]: {
+      maxWidth: '100%',
       marginRight: 0,
     },
   },
 
   title: {
-    color: theme.white,
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    fontSize: rem(44),
+    lineHeight: 1.2,
     fontWeight: 900,
-    lineHeight: 1.05,
-    maxWidth: rem(500),
-    fontSize: rem(48),
 
-    [theme.fn.smallerThan('md')]: {
-      maxWidth: '100%',
-      fontSize: rem(34),
-      lineHeight: 1.15,
-    },
-  },
-
-  description: {
-    color: theme.white,
-    opacity: 0.75,
-    maxWidth: rem(500),
-
-    [theme.fn.smallerThan('md')]: {
-      maxWidth: '100%',
+    [theme.fn.smallerThan('xs')]: {
+      fontSize: rem(28),
     },
   },
 
   control: {
-    paddingLeft: rem(50),
-    paddingRight: rem(50),
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontSize: rem(22),
+    [theme.fn.smallerThan('xs')]: {
+      flex: 1,
+    },
+  },
+
+  image: {
+    flex: 1,
 
     [theme.fn.smallerThan('md')]: {
-      width: '100%',
+      display: 'none',
     },
+  },
+
+  highlight: {
+    position: 'relative',
+    backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
+    borderRadius: theme.radius.sm,
+    padding: `${rem(4)} ${rem(12)}`,
   },
 }));
 
-export default function HeroImageRight() {
+export default function HeroBullets() {
   const { classes } = useStyles();
+  const navigate = useNavigate();
+  const handleClick= ()=>{
+    navigate('/signup')
+  }
   return (
-    <div className={classes.root}>
-      <Container size="lg">
+    <div>
+      <Container>
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title className={classes.title}>
-            Start Your Journey to{' '}
-              <Text
-                component="span"
-                inherit
-                variant="gradient"
-                gradient={{ from: 'pink', to: 'yellow' }}
-              >
-                Quit Smoking ...
-              </Text>{' '}
-              {/* with Quit Buddy */}
+            Start Your Journey to a <span className={classes.highlight}>Smoke-Free Life</span> with Quit Buddy 
             </Title>
-
-            <Text className={classes.description} mt={30}>
-            Break free from smoking with Quit Buddy, your trusted companion on the journey to becoming smoke-free.
-             Get personalized guidance, support, and tracking features to help you overcome the challenges of quitting.
-             Join thousands of successful quitters and start a healthier, tobacco-free future with Quit Buddy.
+            <Text color="dimmed" mt="md">
+            With Quit Buddy, you'll have access to a range of tools and features designed to help you quit smoking successfully. 
             </Text>
 
-            <Button
-              variant="gradient"
-              gradient={{ from: 'pink', to: 'yellow' }}
-              size="xl"
-              className={classes.control}
-              mt={40}
+            <List
+              mt={30}
+              spacing="sm"
+              size="sm"
+              icon={
+                <ThemeIcon size={20} radius="xl">
+                  <IconCheck size={rem(12)} stroke={1.5} />
+                </ThemeIcon>
+              }
             >
-              Get started
-            </Button>
+              <List.Item>
+                <b>Tracking consumption</b> -Track your progress, celebrate milestones, and stay motivated with personalized insights and achievements.
+              </List.Item>
+              <List.Item>
+                <b>Resources and Education</b> – Gain valuable knowledge about the benefits of quitting, the effects of smoking on your health,
+                 and strategies to overcome cravings and triggers.
+              </List.Item>
+              <List.Item>
+                <b>Community Support</b> – Connect with a supportive community of individuals who are also on their journey to quit smoking. Share your experiences,
+                 seek advice, and find encouragement from others who understand what you're going through.
+              </List.Item>
+            </List>
+
+            <Group mt={30}>
+              <Button radius="xl" size="md" className={classes.control} onClick={handleClick}>
+                Join Now
+              </Button>
+            </Group>
           </div>
+          <Image src="./HeroSection.jpg" className={classes.image} />
         </div>
       </Container>
     </div>

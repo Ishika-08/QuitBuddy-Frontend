@@ -18,7 +18,7 @@ import {
     ScrollArea,
     rem,
   } from '@mantine/core';
-//   import { MantineLogo } from '@mantine/ds';
+  // import { MantineLogo } from '@mantine/ds';
   import { useDisclosure } from '@mantine/hooks';
   import {
     IconNotification,
@@ -29,6 +29,7 @@ import {
     IconCoin,
     IconChevronDown,
   } from '@tabler/icons-react';
+import { useNavigate } from 'react-router-dom';
   
   const useStyles = createStyles((theme) => ({
     link: {
@@ -127,6 +128,13 @@ import {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
     const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
     const { classes, theme } = useStyles();
+    const navigate = useNavigate();
+    const handleLogIn= ()=>{
+      navigate('/login')
+    }
+    const handleSignUP= ()=>{
+      navigate('/signup')
+    }
   
     const links = mockdata.map((item) => (
       <UnstyledButton className={classes.subLink} key={item.title}>
@@ -150,9 +158,10 @@ import {
       <Box pb={0}>
         <Header height={60} px="md">
           <Group position="apart" sx={{ height: '100%' }}>
+          <img src="./logo.jpg" alt="Logo" style={{ height: '60px', width: '60px', margin: "10px" }} />QuitBuddy
             {/* <MantineLogo size={30} /> */}
   
-            <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
+            {/* <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
               <a href="#" className={classes.link}>
                 Home
               </a>
@@ -207,11 +216,11 @@ import {
               <a href="#" className={classes.link}>
                 Academy
               </a>
-            </Group>
+            </Group> */}
   
             <Group className={classes.hiddenMobile}>
-              <Button variant="default">Log in</Button>
-              <Button>Sign up</Button>
+              <Button variant="default" onClick={handleLogIn}>Log in</Button>
+              <Button onClick={handleSignUP}>Sign up</Button>
             </Group>
   
             <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
@@ -252,8 +261,8 @@ import {
             <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
   
             <Group position="center" grow pb="xl" px="md">
-              <Button variant="default">Log in</Button>
-              <Button>Sign up</Button>
+              <Button variant="default" onClick={handleLogIn}>Log in</Button>
+              <Button onClick={handleSignUP}>Sign up</Button>
             </Group>
           </ScrollArea>
         </Drawer>
