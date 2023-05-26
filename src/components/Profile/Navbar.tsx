@@ -69,10 +69,8 @@ const mockdata = [
   { icon: IconHome2, label: 'Home' },
   { icon: IconGauge, label: 'Dashboard' },
   { icon: IconDeviceDesktopAnalytics, label: 'Analytics' },
-  { icon: IconCalendarStats, label: 'Releases' },
+  { icon: IconCalendarStats, label: 'Blogs' },
   { icon: IconUser, label: 'Account' },
-  { icon: IconFingerprint, label: 'Security' },
-  { icon: IconSettings, label: 'Settings' },
 ];
 
 export default function NavbarMinimalColored({ onNavItemSelect }: NavbarMinimalColoredProps) {
@@ -110,7 +108,6 @@ export default function NavbarMinimalColored({ onNavItemSelect }: NavbarMinimalC
       </Navbar.Section>
       <Navbar.Section>
         <Stack justify="center" spacing={0}>
-          <NavbarLink icon={IconSwitchHorizontal} label="Change account" />
           <NavbarLink icon={IconLogout} label="Logout" />
         </Stack>
       </Navbar.Section>
