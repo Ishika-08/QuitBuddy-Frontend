@@ -4,12 +4,12 @@ import {
   IconHome2,
   IconGauge,
   IconDeviceDesktopAnalytics,
-  IconFingerprint,
+  // IconFingerprint,
   IconCalendarStats,
   IconUser,
-  IconSettings,
+  // IconSettings,
   IconLogout,
-  IconSwitchHorizontal,
+  // IconSwitchHorizontal,
 } from '@tabler/icons-react';
 
 interface NavbarMinimalColoredProps {

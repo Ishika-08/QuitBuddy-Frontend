@@ -2,13 +2,13 @@ import { useState } from 'react';
 import {
   TextInput,
   PasswordInput,
-  Checkbox,
+  // Checkbox,
   Anchor,
   Paper,
   Title,
   Text,
   Container,
-  Group,
+  // Group,
   Button,
 } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
@@ -65,7 +65,7 @@ export default function AuthenticationTitle() {
         setError(true); // Set error to true
         setErrorMessage(errorMessage); // Set the error message
       }
-    } catch (error) {
+    } catch (error:any) {
       console.log('Error:', error.message);
     } finally {
       setLoading(false); // Set loading back to false after the request is completed

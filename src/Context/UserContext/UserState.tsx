@@ -8,7 +8,7 @@ interface Show {
   // Add more properties as needed
 }
 
-const ShowsState: React.FC = (props) => {
+const ShowsState: React.FC = () => {
   // Setting state
   const [data, setData] = useState<Show[]>([]);
 

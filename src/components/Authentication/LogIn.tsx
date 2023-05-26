@@ -48,7 +48,7 @@ export default function AuthenticationTitle() {
       } else {
         console.log('Error:', response.status);
       }
-    } catch (error) {
+    } catch (error:any) {
       console.log('Error:', error.message);
     } finally {
       setLoading(false); // Set loading back to false after the request is completed
@@ -59,9 +59,9 @@ export default function AuthenticationTitle() {
     navigate('/signup');
   };
 
-  const handleForgotPass = () => {
-    navigate('/forgotpass');
-  };
+  // const handleForgotPass = () => {
+  //   navigate('/forgotpass');
+  // };
 
   const handleInputChange = () => {
     setError(false); // Reset error to false when input changes
