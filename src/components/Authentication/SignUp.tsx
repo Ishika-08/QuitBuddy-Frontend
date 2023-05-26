@@ -57,7 +57,8 @@ export default function AuthenticationTitle() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data); // You can do something with the response data here
+        const userId = data._id
+        navigate(`/${userId}/Quiz`) // You can do something with the response data here
       } else if (response.status === 500) {
         setError(true); // Set error to true for server error
       } else {

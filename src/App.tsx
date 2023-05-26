@@ -9,7 +9,8 @@ import ForgotPassword from "./components/Authentication/ForgotPassword"
 import Quiz from "./components/Quiz/Quiz"
 
 
-function App() {
+
+const App: React.FC = () => {
 
   return (
     <BrowserRouter>
@@ -19,7 +20,8 @@ function App() {
           <Route path="/signup" element={<SignUp/>}/>
           <Route path="/dashboard" element={<Profile/>}/>
           <Route path="/forgotpass" element={<ForgotPassword/>}/>
-          <Route path="/quiz" element={<Quiz/>}/>
+          <Route path='/:userID/quiz' element={<Quiz/>}/>
+          <Route path='/:userID/dashboard' element={<Profile/>}/>
 
       </Routes>
     </BrowserRouter>

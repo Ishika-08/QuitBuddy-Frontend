@@ -15,19 +15,9 @@ const questions: Question[] = [
     key: 'age'
   },
   {
-    question: 'What is your weight?',
+    question: 'How many cigarettes do you take in a day on average?',
     type: 'number',
-    key: 'weight'
-  },
-  {
-    question: 'What kind of illness do you have?',
-    type: 'text',
-    key: 'illness'
-  },
-  {
-    question: 'Do you have any allergies?',
-    type: 'text',
-    key: 'allergy'
+    key: 'cigarettes'
   }
 ];
 

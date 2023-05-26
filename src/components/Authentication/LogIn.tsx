@@ -11,7 +11,8 @@ import {
   Group,
   Button,
 } from '@mantine/core';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
+
 const URL = import.meta.env.REACT_APP_URL;
 console.log(URL)
 export default function AuthenticationTitle() {
@@ -20,6 +21,7 @@ export default function AuthenticationTitle() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false); // Added loading state
   const [error, setError] = useState(false); // Added error state
+
 
   const handleLogIn = async () => {
     try {
@@ -39,10 +41,10 @@ export default function AuthenticationTitle() {
         const data = await response.json();
 
         // Access the response data here
-        console.log(data);
+        const userID = (data._id)
 
         // Redirect to a new page or perform other actions after successful login
-        navigate('/dashboard');
+        navigate(`/${userID}/dashboard`);
       } else if (response.status === 500) {
         setError(true); // Set error to true for wrong credentials
       } else {
