@@ -1,8 +1,15 @@
 import Counter from "./counter"
 import StatCard from "./statCard"
-import { Container, Grid, SimpleGrid, Skeleton, rem } from '@mantine/core';
+import { Container, Grid, SimpleGrid} from '@mantine/core';
+import Cravings from "./Cravings";
 
-// const PRIMARY_COL_HEIGHT = rem(600);
+
+const style = {
+  padding: '1rem',
+  margin: '1rem',
+  boxShadow: '1px 1px 1px gray'
+}
+
 
 export default function LeadGrid() {
   const mockData = [
@@ -24,12 +31,13 @@ export default function LeadGrid() {
   
   
   // const theme = useMantineTheme();
-  const SECONDARY_COL_HEIGHT = rem(300);
 
   return (
     <Container my="md">
       <SimpleGrid cols={2} spacing="md" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
+        <div style={style}>
         <Counter />
+        </div>
         <Grid gutter="md">
           <Grid.Col span={10}>
             <StatCard data = {mockData}/>
@@ -38,7 +46,8 @@ export default function LeadGrid() {
             {/* <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} /> */}
           </Grid.Col>
           <Grid.Col span={6}>
-            <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} />
+            {/* <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} /> */}
+            <Cravings/>
           </Grid.Col>
         </Grid>
       </SimpleGrid>

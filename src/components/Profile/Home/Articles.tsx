@@ -68,36 +68,42 @@ const data = [
     './Article/img1.jpg',
     title: 'Quit Smoking',
     category: 'nature',
+    key: 1
   },
   {
     image:
     './Article/img2.jpg',
     title:'Quit Smoking',
     category: 'beach',
+    key: 2
   },
   {
     image:
     './Article/img3.jpg',
     title: 'Quit Smoking',
     category: 'nature',
+    key: 3
   },
   {
     image:
     './Article/img4.jpg',
     title:'Quit Smoking',
     category: 'nature',
+    key: 4
   },
   {
     image:
     './Article/img5.jpg',
     title: 'Quit Smoking',
     category: 'tourism',
+    key: 5
   },
   {
     image:
     './Article/img6.jpg',
     title: 'Quit Smoking',
     category: 'nature',
+    key: 6
   },
 ];
 
@@ -105,7 +111,7 @@ export default function CardsCarousel() {
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
   const slides = data.map((item) => (
-    <Carousel.Slide key={item.title}>
+    <Carousel.Slide key={item.key}>
       <Card {...item} />
     </Carousel.Slide>
   ));

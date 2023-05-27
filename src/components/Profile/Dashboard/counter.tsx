@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { createStyles, NumberInput, NumberInputHandlers, ActionIcon, rem } from '@mantine/core';
+import { createStyles, NumberInput, NumberInputHandlers, ActionIcon, rem, Button} from '@mantine/core';
 import { IconPlus, IconMinus } from '@tabler/icons-react';
 
 const useStyles = createStyles((theme) => ({
@@ -9,9 +9,6 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'space-between',
     padding: `${rem(6)} ${theme.spacing.xs}`,
     borderRadius: theme.radius.sm,
-    border: `${rem(1)} solid ${
-      theme.colorScheme === 'dark' ? 'transparent' : theme.colors.gray[3]
-    }`,
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.white,
 
     '&:focus-within': {
@@ -46,14 +43,14 @@ interface QuantityInputProps {
   max?: number;
 }
 
-export default function QuantityInput({ min = 1, max = 10 }: QuantityInputProps) {
+export default function QuantityInput({ min = 0, max = 30 }: QuantityInputProps) {
   const { classes } = useStyles();
   const handlers = useRef<NumberInputHandlers>(null);
-  const [value, setValue] = useState<number | ''>(1);
+  const [value, setValue] = useState<number | ''>(0);
 
   return (
     <div>
-        <h2>In order to better understand your smoking habits, could you kindly share the number of cigarettes you've had today?</h2>
+        <h3 style={{color: '#838383'}}>In order to better understand your smoking habits, could you kindly share the number of cigarettes you've had today?</h3>
         <div className={classes.wrapper}>
       <ActionIcon<'button'>
         size={28}
@@ -85,8 +82,12 @@ export default function QuantityInput({ min = 1, max = 10 }: QuantityInputProps)
         onMouseDown={(event) => event.preventDefault()}
       >
         <IconPlus size="1rem" stroke={1.5} />
+        
       </ActionIcon>
     </div>
+    <Button fullWidth mt="xl">
+            Submit
+      </Button>
     </div>
    
   );

@@ -125,6 +125,15 @@ export default function AuthenticationTitle() {
             Login
           </Button>
         )}
+        <br/>
+        <hr/>
+        <div style={{color: 'gray'}}>
+        <p>Demo Authentication:</p>
+        <p>Username: demo@gmail.com</p>
+        <p>Password: demo123</p>
+        </div>
+                 
+
       </Paper>
 
       
