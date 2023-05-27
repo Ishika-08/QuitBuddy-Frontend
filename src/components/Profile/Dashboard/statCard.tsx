@@ -12,6 +12,9 @@ interface StatsRingProps {
   }[];
 }
 
+
+
+
 const icons = {
   up: IconArrowUpRight,
   down: IconArrowDownRight,

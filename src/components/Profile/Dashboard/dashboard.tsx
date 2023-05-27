@@ -2,7 +2,17 @@ import Counter from "./counter"
 import StatCard from "./statCard"
 import { Container, Grid, SimpleGrid} from '@mantine/core';
 import Cravings from "./Cravings";
+import {useState, useEffect } from 'react'
+import { useParams } from "react-router-dom";
 
+interface Userdata {
+  username: string;
+  email: string;
+  perDayCount: number;
+  cigarettesNotSmoked: number;
+  lungCapacity: number;
+  diseaseRisk: number;
+}
 
 const style = {
   padding: '1rem',
@@ -12,22 +22,46 @@ const style = {
 
 
 export default function LeadGrid() {
+  // const [Userdata, setUserdata] = useState<Userdata>({});
+  const [Userdata, setUserdata] = useState<Partial<Userdata>>({});
+
+  const { userID } = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://geeks-for-geeks-health-backend.up.railway.app/${userID}/medicalData`
+        );
+        const data = await response.json();
+        setUserdata(data)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [userID]);
+
+
   const mockData = [
     {
       label: "Lung Capacity",
-      stats: "10,000",
-      progress: 80,
+      stats: `${Userdata.lungCapacity} %`,
+      progress: Userdata.lungCapacity,
       color: "green",
-      icon: 'up' as const, // Use 'up' as const
+      icon: 'up',
     },
     {
       label: "Disease Risk",
-      stats: "5,000",
-      progress: 50,
+      stats: `${Userdata.diseaseRisk} %`,
+      progress: Userdata.diseaseRisk,
       color: "red",
-      icon: 'down' as const, // Use 'down' as const
+      icon: 'down',
     }
   ];
+  
+  
   
   
   // const theme = useMantineTheme();

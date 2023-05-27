@@ -1,15 +1,15 @@
-import  { useState, useEffect } from 'react';
+import  { useState} from 'react';
 import './Profile.css';
 import Navbar from './Navbar';
 import Home from './Home/home';
 import Analytics from './Analytics/Analytics';
 import Dashboard from './Dashboard/dashboard';
 import Blogs from './Blogs/Blogs';
-import { useParams } from 'react-router-dom';
 
 const App = () => {
   const [selectedContent, setSelectedContent] = useState('Home');
-  const { userID } = useParams();
+
+
 
   const mockData = {
     image: '/Article/img1.jpg',
@@ -28,21 +28,7 @@ const App = () => {
     setSelectedContent(content);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://geeks-for-geeks-health-backend.up.railway.app/${userID}/medicalData`
-        );
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, [userID]);
+  
 
   const renderSelectedContent = () => {
     switch (selectedContent) {

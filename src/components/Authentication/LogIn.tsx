@@ -129,7 +129,7 @@ export default function AuthenticationTitle() {
         <hr/>
         <div style={{color: 'gray'}}>
         <p>Demo Authentication:</p>
-        <p>Username: demo@gmail.com</p>
+        <p>Username: demo123@gmail.com</p>
         <p>Password: demo123</p>
         </div>
                  

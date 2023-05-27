@@ -1,10 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
 import { createStyles, UnstyledButton, Text, Paper, Group, rem } from '@mantine/core';
 import {
   IconChevronDown,
   IconChevronUp,
 } from '@tabler/icons-react';
+import { useParams } from 'react-router-dom';
+
+// interface Userdata {
+//   perDayCount?: number;
+//   cigarettesNotSmoked?: number;
+//   // Add other properties of Userdata here
+// }
+
+interface Userdata {
+  username: string;
+  email: string;
+  perDayCount: number;
+  cigarettesNotSmoked: number;
+  lungCapacity: number;
+  diseaseRisk: number;
+}
+
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -125,14 +142,37 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const data = [
-  { icon: "/Dashboard/free.png", label: 'Days Smoke-Free' },
-  { icon: "/Dashboard/no-smoking.png", label: 'Cigarettes not smoked' },
-];
+
+
 
 export default function StatsControls() {
   const { classes } = useStyles();
+  const {userID} = useParams()
   const [date, setDate] = useState(new Date(2021, 9, 24));
+  // const [Userdata, setUserdata] = useState<Userdata>({});
+  const [Userdata, setUserdata] = useState<Partial<Userdata>>({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://geeks-for-geeks-health-backend.up.railway.app/${userID}/medicalData`
+        );
+        const data = await response.json();
+        setUserdata(data)
+        console.log(Userdata);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [userID]);
+
+  const data = [
+    { icon: "/Dashboard/free.png", label: 'Days Smoke-Free', value: `${Userdata.perDayCount} days` },
+    { icon: "/Dashboard/no-smoking.png", label: 'Cigarettes not smoked', value: `${Userdata.cigarettesNotSmoked} cigarettes`}
+  ];
 
   const stats = data.map((stat) => (
     <Paper className={classes.stat} radius="md" shadow="md" p="xs" key={stat.label}>
@@ -141,7 +181,7 @@ export default function StatsControls() {
       <div>
         <Text className={classes.label}>{stat.label}</Text>
         <Text fz="xs" className={classes.count}>
-          <span className={classes.value}>{Math.floor(Math.random() * 6 + 4)}km</span> / 10km
+          <span className={classes.value}>{stat.value}</span>
         </Text>
       </div>
     </Paper>
