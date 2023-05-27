@@ -6,7 +6,7 @@ import {
   IconDeviceDesktopAnalytics,
   // IconFingerprint,
   IconCalendarStats,
-  IconUser,
+  // IconUser,
   // IconSettings,
   IconLogout,
   // IconSwitchHorizontal,
@@ -70,7 +70,7 @@ const mockdata = [
   { icon: IconGauge, label: 'Dashboard' },
   { icon: IconDeviceDesktopAnalytics, label: 'Analytics' },
   { icon: IconCalendarStats, label: 'Blogs' },
-  { icon: IconUser, label: 'Account' },
+  // { icon: IconUser, label: 'Account' },
 ];
 
 export default function NavbarMinimalColored({ onNavItemSelect }: NavbarMinimalColoredProps) {

@@ -4,6 +4,7 @@ import { Container, Grid, SimpleGrid } from '@mantine/core';
 import Cravings from "./Cravings";
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
+import './dashboard.css';
 
 interface Userdata {
   username: string;
@@ -15,9 +16,11 @@ interface Userdata {
 }
 
 const style = {
-  padding: '1rem',
+  padding: '4rem',
   margin: '1rem',
-  boxShadow: '1px 1px 1px gray'
+  // boxShadow: '1px 1px 1px gray'
+  border: '1px solid gray',
+  borderRadius: '2rem',
 }
 
 export default function LeadGrid() {
@@ -58,12 +61,15 @@ export default function LeadGrid() {
   ];
 
   return (
+    <>
+    <h1 className="title">Welcome to Quit Buddy</h1>
+    <p className="tagline">Stay motivated and achieve your smoke-free goals!</p>
     <Container my="md">
       <SimpleGrid cols={2} spacing="md" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
         <div style={style}>
           <Counter />
         </div>
-        <Grid gutter="md">
+        <Grid gutter="xs">
           <Grid.Col span={10}>
             <StatCard data={mockData} />
           </Grid.Col>
@@ -77,5 +83,7 @@ export default function LeadGrid() {
         </Grid>
       </SimpleGrid>
     </Container>
+    </>
+    
   );
 }

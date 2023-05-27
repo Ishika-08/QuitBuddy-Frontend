@@ -17,6 +17,14 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  successMessage: {
+    color: 'green',
+    marginTop: '4rem',
+    fontSize: '2rem',
+    margin: '0 auto',
+    padding: '2rem'
+  },
+
   control: {
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
     border: `${rem(1)} solid ${
@@ -49,6 +57,7 @@ export default function QuantityInput({ min = 0, max = 30 }: QuantityInputProps)
   const { classes } = useStyles();
   const handlers = useRef<NumberInputHandlers>(null);
   const [value, setValue] = useState<number | ''>(0);
+  const [success, setSuccess] = useState(false);
 
   const {userID} = useParams()
 
@@ -69,6 +78,7 @@ export default function QuantityInput({ min = 0, max = 30 }: QuantityInputProps)
     })
       .then((response) => {
         if (response.ok) {
+          setSuccess(true);
           // Handle successful response
           console.log('Data submitted successfully');
         } else {
@@ -122,6 +132,7 @@ export default function QuantityInput({ min = 0, max = 30 }: QuantityInputProps)
     <Button fullWidth mt="xl" onClick={handleSubmit}>
             Submit
       </Button>
+      {success && <p className={classes.successMessage}>Submission successful!</p>} {/* Display success message */}
     </div>
    
   );

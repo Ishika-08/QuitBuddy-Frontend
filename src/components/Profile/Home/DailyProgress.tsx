@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import dayjs from 'dayjs';
-import { createStyles, UnstyledButton, Text, Paper, Group, rem } from '@mantine/core';
-import {
-  IconChevronDown,
-  IconChevronUp,
-} from '@tabler/icons-react';
+// import dayjs from 'dayjs';
+import { createStyles, Text, Paper, Group, rem } from '@mantine/core';
+// import {
+//   IconChevronDown,
+//   IconChevronUp,
+// } from '@tabler/icons-react';
 import { useParams } from 'react-router-dom';
 
 // interface Userdata {
@@ -148,7 +148,7 @@ const useStyles = createStyles((theme) => ({
 export default function StatsControls() {
   const { classes } = useStyles();
   const {userID} = useParams()
-  const [date, setDate] = useState(new Date(2021, 9, 24));
+  // const [date, setDate] = useState(new Date(2021, 9, 24));
   // const [Userdata, setUserdata] = useState<Userdata>({});
   const [Userdata, setUserdata] = useState<Partial<Userdata>>({});
 
@@ -189,13 +189,13 @@ export default function StatsControls() {
 
   return (
     <div className={classes.root}>
-      <div className={classes.controls}>
+      {/* <div className={classes.controls}>
         <UnstyledButton
           className={classes.control}
           onClick={() => setDate((current) => dayjs(current).add(1, 'day').toDate())}
         >
           <IconChevronUp size="1rem" className={classes.controlIcon} stroke={1.5} />
-        </UnstyledButton>
+        </UnstyledButton> 
 
         <div className={classes.date}>
           <Text className={classes.day}>{dayjs(date).format('DD')}</Text>
@@ -208,7 +208,7 @@ export default function StatsControls() {
         >
           <IconChevronDown size="1rem" className={classes.controlIcon} stroke={1.5} />
         </UnstyledButton>
-      </div>
+      </div> */}
       <Group sx={{ flex: 1 }}>{stats}</Group>
     </div>
   );
