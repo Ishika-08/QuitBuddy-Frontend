@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Quiz.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface Question {
   question: string;
@@ -17,19 +17,20 @@ const questions: Question[] = [
   {
     question: 'How many cigarettes do you take in a day on average?',
     type: 'number',
-    key: 'cigarettes'
+    key: 'smoked'
   }
 ];
 
 const Quiz: React.FC = () => {
   const [currentCard, setCurrentCard] = useState<number>(0);
-  const [answers, setAnswers] = useState<string[]>([]);
-  const navigate = useNavigate()
+  const [answers, setAnswers] = useState<number[]>([]); // Changed the state type to number[]
+  const navigate = useNavigate();
+  const { userID } = useParams();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const updatedAnswers = [...answers];
-    updatedAnswers[currentCard] = value;
+    updatedAnswers[currentCard] = parseInt(value); // Parse the input value as an integer
     setAnswers(updatedAnswers);
   };
 
@@ -45,14 +46,29 @@ const Quiz: React.FC = () => {
     }
   };
 
-  const handleSubmit = () => {
-    // Handle submission of answers
-    const formData: { [key: string]: string } = {};
-    questions.forEach((e, index) => {
-      formData[e.key] = answers[index];
-    });
-    console.log(formData);
-    navigate('/dashboard')
+  const handleSubmit = async () => {
+    const formData = {
+      age: answers[0],
+      smoked: answers[1]
+    };
+
+    try {
+      const response = await fetch(`https://geeks-for-geeks-health-backend.up.railway.app/${userID}/medicalData`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        navigate(`/${userID}/dashboard`);
+      } else {
+        console.log('Error:', response.status);
+      }
+    } catch (error: any) {
+      console.log('Error:', error.message);
+    }
   };
 
   return (
@@ -80,4 +96,3 @@ const Quiz: React.FC = () => {
 };
 
 export default Quiz;
-
