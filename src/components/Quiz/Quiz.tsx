@@ -15,6 +15,21 @@ const questions: Question[] = [
     key: 'age'
   },
   {
+    question: 'What is your weight?(in Kg)',
+    type: 'number',
+    key: 'weight'
+  },
+  {
+    question: 'What is your height? (in cm)',
+    type: 'number',
+    key: 'height'
+  },
+  {
+    question: 'What is your Gender?',
+    type: 'text',
+    key: 'gender'
+  },
+  {
     question: 'How many cigarettes do you take in a day on average?',
     type: 'number',
     key: 'smoked'
