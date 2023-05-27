@@ -1,8 +1,8 @@
-import Counter from "./counter"
-import StatCard from "./statCard"
-import { Container, Grid, SimpleGrid} from '@mantine/core';
+import Counter from "./counter";
+import StatCard from "./statCard";
+import { Container, Grid, SimpleGrid } from '@mantine/core';
 import Cravings from "./Cravings";
-import {useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 
 interface Userdata {
@@ -10,8 +10,8 @@ interface Userdata {
   email: string;
   perDayCount: number;
   cigarettesNotSmoked: number;
-  lungCapacity: number;
-  diseaseRisk: number;
+  lungCapacity?: number;
+  diseaseRisk?: number;
 }
 
 const style = {
@@ -20,11 +20,8 @@ const style = {
   boxShadow: '1px 1px 1px gray'
 }
 
-
 export default function LeadGrid() {
-  // const [Userdata, setUserdata] = useState<Userdata>({});
   const [Userdata, setUserdata] = useState<Partial<Userdata>>({});
-
   const { userID } = useParams();
 
   useEffect(() => {
@@ -34,7 +31,7 @@ export default function LeadGrid() {
           `https://geeks-for-geeks-health-backend.up.railway.app/${userID}/medicalData`
         );
         const data = await response.json();
-        setUserdata(data)
+        setUserdata(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -43,45 +40,39 @@ export default function LeadGrid() {
     fetchData();
   }, [userID]);
 
-
   const mockData = [
     {
       label: "Lung Capacity",
-      stats: `${Userdata.lungCapacity} %`,
-      progress: Userdata.lungCapacity,
+      stats: `${Userdata.lungCapacity || 0} %`,
+      progress: Userdata.lungCapacity || 0,
       color: "green",
-      icon: 'up',
+      icon: Userdata.lungCapacity ? "up" : "down" as "up" | "down",
     },
     {
       label: "Disease Risk",
-      stats: `${Userdata.diseaseRisk} %`,
-      progress: Userdata.diseaseRisk,
+      stats: `${Userdata.diseaseRisk || 0} %`,
+      progress: Userdata.diseaseRisk || 0,
       color: "red",
-      icon: 'down',
+      icon: Userdata.diseaseRisk ? "up" : "down" as "up" | "down",
     }
   ];
-  
-  
-  
-  
-  // const theme = useMantineTheme();
 
   return (
     <Container my="md">
       <SimpleGrid cols={2} spacing="md" breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
         <div style={style}>
-        <Counter />
+          <Counter />
         </div>
         <Grid gutter="md">
           <Grid.Col span={10}>
-            <StatCard data = {mockData}/>
+            <StatCard data={mockData} />
           </Grid.Col>
           <Grid.Col>
             {/* <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} /> */}
           </Grid.Col>
           <Grid.Col span={6}>
             {/* <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} /> */}
-            <Cravings/>
+            <Cravings />
           </Grid.Col>
         </Grid>
       </SimpleGrid>
