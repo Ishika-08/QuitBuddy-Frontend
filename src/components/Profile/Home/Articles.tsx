@@ -65,42 +65,42 @@ function Card({ image, title, category }: CardProps) {
 const data = [
   {
     image:
-    './Article/img1.jpg',
+    '/Article/img6.jpg',
     title: 'Quit Smoking',
     category: 'nature',
     key: 1
   },
   {
     image:
-    './Article/img2.jpg',
+    '/Article/img2.jpg',
     title:'Quit Smoking',
     category: 'beach',
     key: 2
   },
   {
     image:
-    './Article/img3.jpg',
+    '/Article/img3.jpg',
     title: 'Quit Smoking',
     category: 'nature',
     key: 3
   },
   {
     image:
-    './Article/img4.jpg',
+    '/Article/img4.jpg',
     title:'Quit Smoking',
     category: 'nature',
     key: 4
   },
   {
     image:
-    './Article/img5.jpg',
+    '/Article/img5.jpg',
     title: 'Quit Smoking',
     category: 'tourism',
     key: 5
   },
   {
     image:
-    './Article/img6.jpg',
+    '/Article/img1.jpg',
     title: 'Quit Smoking',
     category: 'nature',
     key: 6

@@ -10,7 +10,7 @@ const App = () => {
   const [selectedContent, setSelectedContent] = useState('Home');
 
   const mockData= {
-    image: "./Article/img1.jpg",
+    image: "/Article/img1.jpg",
     link: 'https://example.com/smoking-article',
     title: 'Tips for Quitting Smoking',
     description: 'Discover effective strategies and tips to help you quit smoking and improve your health.',

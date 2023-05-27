@@ -2,8 +2,6 @@ import { useState } from 'react';
 import dayjs from 'dayjs';
 import { createStyles, UnstyledButton, Text, Paper, Group, rem } from '@mantine/core';
 import {
-  IconSwimming,
-  IconRun,
   IconChevronDown,
   IconChevronUp,
 } from '@tabler/icons-react';
@@ -128,8 +126,8 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const data = [
-  { icon: IconRun, label: 'Days Smoke-Free' },
-  { icon: IconSwimming, label: 'Cigarettes not smoked' },
+  { icon: "/Dashboard/free.png", label: 'Days Smoke-Free' },
+  { icon: "/Dashboard/no-smoking.png", label: 'Cigarettes not smoked' },
 ];
 
 export default function StatsControls() {
@@ -138,7 +136,8 @@ export default function StatsControls() {
 
   const stats = data.map((stat) => (
     <Paper className={classes.stat} radius="md" shadow="md" p="xs" key={stat.label}>
-      <stat.icon size={32} className={classes.icon} stroke={1.5} />
+      {/* <stat.icon size={32} className={classes.icon} stroke={1.5} /> */}
+      <img src={stat.icon} style={{width: '4rem', margin:'0 auto'}}/>
       <div>
         <Text className={classes.label}>{stat.label}</Text>
         <Text fz="xs" className={classes.count}>
