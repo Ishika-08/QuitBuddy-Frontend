@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { createStyles, NumberInput, NumberInputHandlers, ActionIcon, rem, Button} from '@mantine/core';
 import { IconPlus, IconMinus } from '@tabler/icons-react';
+import { useParams } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -43,10 +44,43 @@ interface QuantityInputProps {
   max?: number;
 }
 
+
 export default function QuantityInput({ min = 0, max = 30 }: QuantityInputProps) {
   const { classes } = useStyles();
   const handlers = useRef<NumberInputHandlers>(null);
   const [value, setValue] = useState<number | ''>(0);
+
+  const {userID} = useParams()
+
+
+  const handleSubmit = () => {
+    // Create the payload object
+    const formData = {
+      smoked: value
+    };
+
+    // Make the API request
+    fetch(`https://geeks-for-geeks-health-backend.up.railway.app/${userID}/progressData`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Handle successful response
+          console.log('Data submitted successfully');
+        } else {
+          // Handle error response
+          console.error('Failed to submit data');
+        }
+      })
+      .catch((error) => {
+        // Handle request error
+        console.error('Request failed', error);
+      });
+    }
 
   return (
     <div>
@@ -85,7 +119,7 @@ export default function QuantityInput({ min = 0, max = 30 }: QuantityInputProps)
         
       </ActionIcon>
     </div>
-    <Button fullWidth mt="xl">
+    <Button fullWidth mt="xl" onClick={handleSubmit}>
             Submit
       </Button>
     </div>
