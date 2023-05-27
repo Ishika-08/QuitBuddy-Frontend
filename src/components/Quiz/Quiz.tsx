@@ -38,14 +38,14 @@ const questions: Question[] = [
 
 const Quiz: React.FC = () => {
   const [currentCard, setCurrentCard] = useState<number>(0);
-  const [answers, setAnswers] = useState<number[]>([]); // Changed the state type to number[]
+  const [answers, setAnswers] = useState<string[]>([]); // Changed the state type to string[]
   const navigate = useNavigate();
   const { userID } = useParams();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const updatedAnswers = [...answers];
-    updatedAnswers[currentCard] = parseInt(value); // Parse the input value as an integer
+    updatedAnswers[currentCard] = value;
     setAnswers(updatedAnswers);
   };
 
@@ -63,8 +63,11 @@ const Quiz: React.FC = () => {
 
   const handleSubmit = async () => {
     const formData = {
-      age: answers[0],
-      smoked: answers[1]
+      age: parseInt(answers[0]),
+      weight: parseInt(answers[1]),
+      height: parseInt(answers[2]),
+      gender: answers[3],
+      avgSmoked: parseInt(answers[4])
     };
 
     try {
