@@ -33,11 +33,11 @@ const App = () => {
   const renderSelectedContent = () => {
     switch (selectedContent) {
       case 'Home':
-        return <Home />;
+        return <Dashboard />;
       case 'Analytics':
         return <Analytics />;
       case 'Dashboard':
-        return <Dashboard />;
+        return <Home />;
       case 'Blogs':
         return <Blogs {...mockData} />;
       default:
