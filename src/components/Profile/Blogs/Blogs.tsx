@@ -10,7 +10,12 @@ import {
   Avatar,
   createStyles,
   rem,
+  // Button
 } from '@mantine/core';
+
+// const buttonStyle = {
+//   margin: '5rem auto'
+// }
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -69,6 +74,9 @@ export default function ArticleCard({
   const linkProps = { href: link, target: '_blank', rel: 'noopener noreferrer' };
 
   return (
+    <>
+    {/* <Button sytle={buttonStyle}> + New Post</Button> */}
+    <div>
     <Card withBorder radius="md" className={cx(classes.card, className)} {...others}>
       <Card.Section>
         <a {...linkProps}>
@@ -109,5 +117,9 @@ export default function ArticleCard({
         </Group>
       </Group>
     </Card>
+    </div>
+    
+    </>
+    
   );
 }

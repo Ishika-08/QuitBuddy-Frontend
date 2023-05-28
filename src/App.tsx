@@ -7,7 +7,7 @@ import SignUp from "./components/Authentication/SignUp"
 import Profile from "./components/Profile/Profile"
 import ForgotPassword from "./components/Authentication/ForgotPassword"
 import Quiz from "./components/Quiz/Quiz"
-// import Triggers from './components/triggers/triggers'
+import Triggers from './components/triggers/triggers'
 
 
 
@@ -22,7 +22,7 @@ const App: React.FC = () => {
           <Route path="/forgotpass" element={<ForgotPassword/>}/>
           <Route path='/:userID/quiz' element={<Quiz/>}/>
           <Route path='/:userID/dashboard' element={<Profile/>}/>
-          {/* <Route path='/:userID/trigger' element={<Triggers/>}/> */}
+          <Route path='/:userID/trigger' element={<Triggers/>}/>
       </Routes>
     </BrowserRouter>
   )
