@@ -1,0 +1,13 @@
+.newBlogBody{
+    width: 50%;
+    margin: 10rem auto;
+}
+
+.label{
+    display: block;
+}
+
+.input{
+    width: 90%;
+    border-radius: 1rem;
+}

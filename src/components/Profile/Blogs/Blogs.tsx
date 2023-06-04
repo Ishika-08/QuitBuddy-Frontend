@@ -10,12 +10,12 @@ import {
   Avatar,
   createStyles,
   rem,
-  // Button
+  Button
 } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
 
-// const buttonStyle = {
-//   margin: '5rem auto'
-// }
+
+
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -73,9 +73,16 @@ export default function ArticleCard({
   const { classes, cx, theme } = useStyles();
   const linkProps = { href: link, target: '_blank', rel: 'noopener noreferrer' };
 
+  const navigate = useNavigate();
+
+
+  const handleNewPost = ()=>{
+    navigate('/newblog')
+  }
+
   return (
     <>
-    {/* <Button sytle={buttonStyle}> + New Post</Button> */}
+    <Button onClick={handleNewPost}> + New Post</Button>
     <div>
     <Card withBorder radius="md" className={cx(classes.card, className)} {...others}>
       <Card.Section>

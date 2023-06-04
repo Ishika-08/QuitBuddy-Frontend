@@ -8,6 +8,7 @@ import Profile from "./components/Profile/Profile"
 import ForgotPassword from "./components/Authentication/ForgotPassword"
 import Quiz from "./components/Quiz/Quiz"
 import Triggers from './components/triggers/triggers'
+import NewBlog from "./components/Profile/Blogs/NewBlog"
 
 
 
@@ -23,6 +24,7 @@ const App: React.FC = () => {
           <Route path='/:userID/quiz' element={<Quiz/>}/>
           <Route path='/:userID/dashboard' element={<Profile/>}/>
           <Route path='/:userID/trigger' element={<Triggers/>}/>
+          <Route path='/newblog' element={<NewBlog/>}/>
       </Routes>
     </BrowserRouter>
   )
